@@ -1,0 +1,69 @@
+#:kivy 2.0.0
+
+<OneLineListItem>:
+    font_name: "CN"
+    font_size: '16sp'
+
+<MDTextField>:
+    font_name: "CN"
+    font_size: '16sp'
+
+<MDRaisedButton>:
+    font_name: "CN"
+    font_size: '14sp'
+
+<MDFlatButton>:
+    font_name: "CN"
+    font_size: '14sp'
+
+BoxLayout:
+    orientation: "vertical"
+    spacing: "10dp"
+    padding: "10dp"
+
+    MDTopAppBar:
+        title: "员工短号管理"
+        elevation: 4
+        md_bg_color: app.theme_cls.primary_color
+        specific_text_color: 1, 1, 1, 1
+
+    MDTextField:
+        id: search_field
+        hint_text: "搜索姓名或短号..."
+        size_hint_y: None
+        height: "48dp"
+        on_text: app.refresh_list(self.text)
+        font_name: "CN"
+        font_size: '16sp'
+
+    ScrollView:
+        MDList:
+            id: container
+            spacing: "5dp"
+
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint_y: None
+        height: "60dp"
+        spacing: "10dp"
+
+        MDTextField:
+            id: name_field
+            hint_text: "姓名"
+            size_hint_x: 0.4
+            font_name: "CN"
+            font_size: '16sp'
+
+        MDTextField:
+            id: short_field
+            hint_text: "短号"
+            size_hint_x: 0.4
+            font_name: "CN"
+            font_size: '16sp'
+
+        MDRaisedButton:
+            text: "添加"
+            size_hint_x: 0.2
+            on_release: app.add_employee()
+            font_name: "CN"
+            font_size: '14sp'
